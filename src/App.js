@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FriendsList from "./FriendsList";
 import Button from "./Button";
-import FormAddFriend from "./FormAddFriend";
 import FormSplitBill from "./FormSplitBill";
 
 const initialFriends = [
@@ -26,14 +25,19 @@ const initialFriends = [
 ];
 
 export default function App() {
+  const LOCAL_KEY = "friends";
+  const [friends, setFriends] = useState(initialFriends);
+  const addNewFriend = (newFriend) => {
+    setFriends([...friends, newFriend]);
+  };
+  console.log(friends);
+  useEffect(() => {
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(friends));
+  }, [friends]);
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendsList />
-
-        <FormAddFriend />
-
-        <Button>"Add friend"</Button>
+        <FriendsList friends={friends} addNewFriend={addNewFriend} />
       </div>
 
       <FormSplitBill />
