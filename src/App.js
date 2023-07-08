@@ -1,5 +1,8 @@
 import { useState } from "react";
-import logo from "./logo.svg";
+import FriendsList from "./FriendsList";
+import Button from "./Button";
+import FormAddFriend from "./FormAddFriend";
+import FormSplitBill from "./FormSplitBill";
 
 const initialFriends = [
   {
@@ -22,14 +25,6 @@ const initialFriends = [
   },
 ];
 
-function Button({ children, onClick }) {
-  return (
-    <button className="button" onClick={onClick}>
-      {children}
-    </button>
-  );
-}
-
 export default function App() {
   return (
     <div className="app">
@@ -43,67 +38,5 @@ export default function App() {
 
       <FormSplitBill />
     </div>
-  );
-}
-
-function FriendsList() {
-  return (
-    <ul>
-      <Friend />
-    </ul>
-  );
-}
-
-function Friend() {
-  return (
-    <li className="">
-      <img src={logo} alt="pcha" />
-      <h3>jesho</h3>
-
-      {/* <p className="red">You owe €</p> */}
-
-      <p>You and ppp are even</p>
-
-      <Button>Select</Button>
-    </li>
-  );
-}
-
-function FormAddFriend() {
-  return (
-    <form className="form-add-friend">
-      <label>👫 Friend name</label>
-      <input type="text" />
-
-      <label>🌄 Image URL</label>
-      <input type="text" />
-
-      <Button>Add</Button>
-    </form>
-  );
-}
-
-function FormSplitBill() {
-  return (
-    <form className="form-split-bill">
-      <h2>Split a bill with </h2>
-
-      <label>💰 Bill value</label>
-      <input type="text" />
-
-      <label>🧍‍♀️ Your expense</label>
-      <input type="text" />
-
-      <label>👫 's expense</label>
-      <input type="text" disabled />
-
-      <label>🤑 Who is paying the bill</label>
-      <select>
-        <option value="user">You</option>
-        <option value="friend">{"friend"}</option>
-      </select>
-
-      <Button>Split bill</Button>
-    </form>
   );
 }
