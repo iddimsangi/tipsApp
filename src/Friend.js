@@ -1,7 +1,8 @@
 import Button from "./Button";
 import logo from "./logo.svg";
-function Friend({ friend }) {
+function Friend({ friend, splitFriendBill }) {
   const { id, name, image, balance } = friend;
+
   return (
     <li className="" key={id}>
       <img src={image} alt="pcha" />
@@ -15,7 +16,7 @@ function Friend({ friend }) {
           : `You owe ${name} ${balance}€`}
       </p>
 
-      <Button>Select</Button>
+      <Button onClick={() => splitFriendBill(id)}>Select</Button>
     </li>
   );
 }
